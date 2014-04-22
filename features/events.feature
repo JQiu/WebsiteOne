@@ -21,6 +21,14 @@ Feature: Events
     #And I should see "GMT"
     #And I should see "EDT"
 
+  Scenario: Show index of events when a user is logged in with geo info
+    Given I am logged in with latitude 37.793688 and longitude -122.3958692
+    And the date is "2014/02/01 09:15:00 UTC"
+    Then I should see "AgileVentures Events"
+    And I should see "Scrum"
+    And I should see "PP Session"
+    And I should see "PDT"
+
   Scenario: Show index of events with a New Event button for logged in user
     Given I am logged in
     Given I am on Events index page
@@ -46,6 +54,18 @@ Feature: Events
     And I should see "Daily scrum meeting"
     And I should see "Upcoming schedule"
     And I should see "2014-02-03 at 07:00AM"
+    And I should see "Edit"
+    And I should see "Add url"
+    And I should see "Back"
+
+  Scenario: Show an event when a user is logged in with geo info
+    Given I am logged in with latitude 37.793688 and longitude -122.3958692
+    And I am on Events index page
+    And I click "Scrum"
+    Then I should see "Scrum"
+    And I should see "Daily scrum meeting"
+    And I should see "Upcoming schedule"
+    And I should see "2014-02-03 at 12:00AM"
     And I should see "Edit"
     And I should see "Add url"
     And I should see "Back"
